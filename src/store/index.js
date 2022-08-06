@@ -1,11 +1,35 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import router from '../router/index.js'
 Vue.use(Vuex)
- 
+
 const state = {
     projects: [
         {
             name: 'Project Alpha',
+            id: 'hjihjksd',
+            tasks: [
+                {
+                    text: 'Random text task project test test',
+                    completed: false
+                },
+                {
+                    text: 'Random text task project test test',
+                    completed: false
+                },
+                {
+                    text: 'Go to store ',
+                    completed: true
+                },
+                {
+                    text: 'Random text task project test test',
+                    completed: false
+                }
+            ]
+        },
+        {
+            name: 'Project Beta',
+            id: 'bbbbb',
             tasks: [
                 {
                     text: 'Random text task project test test',
@@ -31,7 +55,10 @@ const state = {
 const getters = {
     getProjects: (state) => {
       return state.projects
-    },   
+    },
+    getCurrentProject: (state) => {
+        return state.projects ? state.projects.find(p => p.id == router.currentRoute.params.id) : null
+    }
 }
 
 const mutations = {
