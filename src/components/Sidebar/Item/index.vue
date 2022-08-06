@@ -1,5 +1,6 @@
 <template>
-    <div :class="`item ${selected ? 'item--state-selected' : ''}`">
+    <div :class="`item ${selected ? 'item--state-selected' : ''}`"
+        @click="$emit('click')">
         <Label :selected="selected"
             :status="status" />
         <Badge :status="status" />    
@@ -43,6 +44,7 @@ export default {
 
     .item:hover {
         background-color: var(--color-grayscale-250);
+        cursor: pointer;
     }
     
     .item--state-selected {

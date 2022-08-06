@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import router from '../router/index.js'
 Vue.use(Vuex)
 
 const state = {
@@ -55,9 +54,6 @@ const state = {
 const getters = {
     getProjects: (state) => {
       return state.projects
-    },
-    getCurrentProject: (state) => {
-        return state.projects ? state.projects.find(p => p.id == router.currentRoute.params.id) : null
     }
 }
 

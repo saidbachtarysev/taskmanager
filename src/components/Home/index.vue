@@ -1,10 +1,12 @@
 <template>
     <div>
         <div class="sidebar">
-            <Header />
+            <Header title="Task manager"
+                logo="logo.svg" />
             <Item v-for="project in projects" 
                 :key="project.id"
-                :project="project" />
+                :project="project"
+                @click="$router.push(project.id)" />
         </div>
         <div class="content">
             <router-view />
@@ -26,6 +28,18 @@ export default {
         ...mapGetters({
             projects: 'getProjects'
         })
+    },
+    methods: {
+        checkProjects() {
+            // If there are projects and if I'm trying to go to '/'
+            if(this.projects && this.$route.name == 'home') {
+                const id = this.projects[0].id
+                this.$router.push(`/${id}`)
+            }
+        }
+    },
+    mounted() {
+       this.checkProjects()
     }
 }
 </script>
