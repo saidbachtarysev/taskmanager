@@ -15,8 +15,8 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import Header from '../Sidebar/Header/index.vue'
-import Item from '../Sidebar/Item/index.vue'
+import Header from '../../components/Sidebar/Header/index.vue'
+import Item from '../../components/Sidebar/Item/index.vue'
 
 export default {
     name: 'Home',

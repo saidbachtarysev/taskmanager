@@ -10,7 +10,7 @@
                         :toggle="toggleCompleted" />
                 </div>
             </div>
-            <Task v-for="task in project.tasks"
+            <Task v-for="task in filteredTasks"
                 :key="task.text"
                 :task="task"
                 @toggleCheck="toggleCheck" />
@@ -19,9 +19,9 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import Header from '../Header/index.vue'
-import Toggle from '../Toggle/index.vue'
-import Task from '../Task/index.vue'
+import Header from '../../components/Header/index.vue'
+import Toggle from '../../components/Toggle/index.vue'
+import Task from '../../components/Task/index.vue'
 
 export default {
     name: 'Project',
@@ -49,6 +49,10 @@ export default {
         }),
         project() {
             return this.projects ? this.projects.find(p => p.id == this.$route.params.id) : null
+        },
+        filteredTasks() {
+            const tasks = this.project.tasks
+            return this.toggleCompleted ? tasks.filter(t => t.completed) : tasks
         }
     }
 }

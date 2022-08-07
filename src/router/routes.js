@@ -1,5 +1,5 @@
-import Home from '../components/Home/index.vue'
-import Project from '../components/Project/index.vue'
+import Home from '../pages/Home/index.vue'
+import Project from '../pages/Project/index.vue'
 
 export const routes = [
     {
