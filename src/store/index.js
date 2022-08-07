@@ -69,8 +69,8 @@ const mutations = {
     },
     REMOVE_TASK: (state, payload) => {
         const currentIndex = state.projects.findIndex(p => p.id == payload.id)
-        const taskIndex = state.projects[currentIndex].tasks.findIndex(t => t == payload.task)
-        state.projects[currentIndex].tasks.splice(taskIndex)
+        const tasks = state.projects[currentIndex].tasks.filter(t => t != payload.task)
+        state.projects[currentIndex].tasks = tasks
     },
 }
 
@@ -81,7 +81,7 @@ const actions = {
     addTask({ commit }, payload) {
         commit('ADD_TASK', payload)
     },
-    removeTask({ commit }, payload) {
+    deleteTask({ commit }, payload) {
         commit('REMOVE_TASK', payload)
     },
 }

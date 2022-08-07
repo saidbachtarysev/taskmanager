@@ -17,3 +17,8 @@ export default {
     }
 }
 </script>
+<style>
+    .label-container input {
+        cursor: pointer;
+    }
+</style>
