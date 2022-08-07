@@ -14,21 +14,26 @@
                 :key="task.text"
                 :task="task"
                 @toggleCheck="toggleCheck" />
+           <AddButton title="Add new task"
+                theme="secondary"
+                @click="AddTask" />     
         </div>
     </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import Header from '../../components/Header/index.vue'
 import Toggle from '../../components/Toggle/index.vue'
 import Task from '../../components/Task/index.vue'
+import AddButton from '../../components/AddButton/index.vue'
 
 export default {
     name: 'Project',
     components: {
         Header,
         Toggle,
-         Task
+         Task,
+         AddButton
     },
     data() {
         return {
@@ -36,11 +41,27 @@ export default {
         }
     },
     methods: {
+        ...mapActions({
+            addTask: 'addTask'
+        }),
         onSwitch(val) {
             this.toggleCompleted = val
         },
         toggleCheck(val) {
             console.log(val)
+        },
+        AddTask() {
+            const answer = prompt('Enter new task')
+            if(answer) {
+                const payload = {
+                    id: this.$route.params.id,
+                    task: {
+                        text: answer,
+                        completed: false
+                    }
+                }
+                this.addTask(payload)
+            }
         }
     },
     computed: {

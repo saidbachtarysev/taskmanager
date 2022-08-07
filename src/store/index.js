@@ -31,19 +31,19 @@ const state = {
             id: 'bbbbb',
             tasks: [
                 {
-                    text: 'Random text task project test test',
+                    text: 'Random texdffffffffproject test test',
                     completed: false
                 },
                 {
-                    text: 'Random text task project test test',
+                    text: 'text task project test test',
                     completed: false
                 },
                 {
-                    text: 'Go to store ',
+                    text: 'Go to market ',
                     completed: true
                 },
                 {
-                    text: 'Random text task project test test',
+                    text: 'test test aaaa test test',
                     completed: false
                 }
             ]
@@ -62,10 +62,14 @@ const mutations = {
         state.projects.append(payload)
     },
     ADD_TASK: (state, payload) => {
-        state.projects[payload.index].tasks.append(payload.task)
+        const currentIndex = state.projects.findIndex(p => p.id == payload.id)
+        const tasks = state.projects[currentIndex].tasks
+        state.projects[currentIndex].tasks = [...tasks, payload.task]
     },
     REMOVE_TASK: (state, payload) => {
-        state.projects[payload.index].tasks.append(payload.task)
+        const currentIndex = state.projects.findIndex(p => p.id == payload.id)
+        const taskIndex = state.projects[currentIndex].tasks.findIndex(t => t == payload.task)
+        state.projects[currentIndex].tasks.splice(taskIndex)
     },
 }
 
@@ -73,11 +77,11 @@ const actions = {
     createProject({ commit }, data) {
         commit('ADD_PROJECT', data)
     },
-    createTask({ commit }, data) {
-        commit('ADD_TASK', data)
+    addTask({ commit }, payload) {
+        commit('ADD_TASK', payload)
     },
-    removeTask({ commit }, data) {
-        commit('REMOVE_TASK', data)
+    removeTask({ commit }, payload) {
+        commit('REMOVE_TASK', payload)
     },
 }
 export default new Vuex.Store({
