@@ -17,7 +17,7 @@ export default {
 </script>
 <style scoped>
     .header {
-        height: 3rem;
+        padding: 1rem 1.25rem;
     }
 
     .header__text {

@@ -47,7 +47,6 @@ export default {
     .sidebar {
         float: left;
         width: 20rem;
-        padding: 1.25rem;
     }
 
     .content {

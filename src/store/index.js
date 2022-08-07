@@ -9,11 +9,11 @@ const state = {
             id: 'hjihjksd',
             tasks: [
                 {
-                    text: 'Random text task project test test',
+                    text: 'text task project test test',
                     completed: false
                 },
                 {
-                    text: 'Random text task project test test',
+                    text: 'Random text task ptest',
                     completed: false
                 },
                 {
@@ -21,7 +21,7 @@ const state = {
                     completed: true
                 },
                 {
-                    text: 'Random text task project test test',
+                    text: 'Random text t test test',
                     completed: false
                 }
             ]

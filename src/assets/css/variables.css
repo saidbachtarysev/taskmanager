@@ -1,4 +1,7 @@
 :root {
+    
+    --color-grayscale-shadow: rgba(20, 20, 42, 0.04);
+
     --color-grayscale-250: #EFF0F6;
     --color-grayscale-300: #E6E7F1;
     --color-grayscale-400: #D6D8E6;
