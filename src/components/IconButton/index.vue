@@ -6,7 +6,7 @@
 </template>
 <script>
 export default {
-    name: 'DeleteButton',
+    name: 'IconButton',
     props: {
         icon: {
             type: String,

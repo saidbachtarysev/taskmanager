@@ -7,14 +7,14 @@
                 @toggleCheck="$emit('toggleCheck')" />
             <p class="task__text">{{ task.text }}</p>
         </div>
-        <DeleteButton v-if="hover"
+        <IconButton v-if="hover"
             @click="onDeleteTask" />
     </div>
 </template>
 <script>
 import { mapActions } from 'vuex'
 import CheckTask from '../CheckTask/index.vue'
-import DeleteButton from '../DeleteButton/index.vue'
+import IconButton from '../IconButton/index.vue'
 
 export default {
     name: 'Task',
@@ -23,7 +23,7 @@ export default {
     },
     components: {
         CheckTask,
-        DeleteButton
+        IconButton
     },
     data() {
         return {

@@ -1,7 +1,7 @@
 <template>
     <div class="project--background">
         <Header :title="project.name"/>
-        <div class="project__body">
+        <div v-if="project" class="project__body">
             <div class="project--content--heading">
                 <h2 class="tasks--title">Tasks</h2>
                 <div class="toggle-wrapper">
@@ -14,9 +14,12 @@
                 :key="task.text"
                 :task="task"
                 @toggleCheck="toggleCheck(index)" />
-           <AddButton title="Add new task"
-                theme="secondary"
-                @click="AddTask" />     
+            <div class="project--actions">
+                <AddButton title="Add new task"
+                    theme="secondary"
+                    @click="AddTask" /> 
+                <IconButton @click="deleteProject" />
+            </div>         
         </div>
     </div>
 </template>
@@ -26,6 +29,7 @@ import Header from '../../components/Header/index.vue'
 import Toggle from '../../components/Toggle/index.vue'
 import Task from '../../components/Task/index.vue'
 import AddButton from '../../components/AddButton/index.vue'
+import IconButton from '../../components/IconButton/index.vue'
 
 export default {
     name: 'Project',
@@ -33,7 +37,8 @@ export default {
         Header,
         Toggle,
         Task,
-        AddButton
+        AddButton,
+        IconButton
     },
     data() {
         return {
@@ -43,8 +48,20 @@ export default {
     methods: {
         ...mapActions({
             addTask: 'addTask',
-            toggleTask: 'toggleTask'
+            toggleTask: 'toggleTask',
+            removeProject: 'removeProject'
         }),
+        deleteProject() {
+            const confirmed = confirm('Are you sure you want to delete the project?')
+            if(confirmed) {
+                const payload = {
+                    id: this.$route.params.id
+                }
+                this.removeProject(payload).then(() => {
+                    this.$router.push(this.projects.length > 0 ? this.projects[0].id : '/')
+                })
+            }
+        },
         onSwitch(value) {
             this.toggleCompleted = value
         },
@@ -94,6 +111,11 @@ export default {
     }
 
     .project--content--heading {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .project--actions {
         display: flex;
         justify-content: space-between;
     }
