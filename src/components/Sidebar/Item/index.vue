@@ -1,11 +1,14 @@
 <template>
     <div :class="`item ${selected ? 'item--state-selected' : ''}`"
         @click="$emit('click')">
-        <Label :selected="selected"
-            :status="status" />
-        <Badge :status="status" />    
-        <p>{{ project.name }}</p>
-        <p>{{ project.tasks.length }}</p>
+        <div class="item__title">
+            <Label :selected="selected"
+                :status="status" />
+            <Badge :status="status"
+                class="badge"/>    
+            <p class="project__name">{{ project.name }}</p>
+        </div>
+        <p class="project__counter">{{ project.tasks.length }}</p>
     </div>
 </template>
 <script>
@@ -36,10 +39,16 @@ export default {
 <style scoped>
     .item {
         display: flex;
-        height: 3.5rem;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .item__title {
         display: flex;
         flex-direction: row;
         align-items: center;
+        height: 3.5rem;
     }
 
     .item:hover {
@@ -49,5 +58,17 @@ export default {
     
     .item--state-selected {
         background-color: var(--color-grayscale-250);
+    }
+
+    .project__name {
+        margin-left: 0.5rem;
+    }
+
+    .project__counter {
+        margin-right: 1.25rem;
+    }
+
+    .badge {
+        margin-left: 1rem;
     }
 </style>

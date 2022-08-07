@@ -10,10 +10,10 @@
                         :toggle="toggleCompleted" />
                 </div>
             </div>
-            <Task v-for="task in filteredTasks"
+            <Task v-for="(task, index) in filteredTasks"
                 :key="task.text"
                 :task="task"
-                @toggleCheck="toggleCheck" />
+                @toggleCheck="toggleCheck(index)" />
            <AddButton title="Add new task"
                 theme="secondary"
                 @click="AddTask" />     
@@ -32,8 +32,8 @@ export default {
     components: {
         Header,
         Toggle,
-         Task,
-         AddButton
+        Task,
+        AddButton
     },
     data() {
         return {
@@ -42,13 +42,18 @@ export default {
     },
     methods: {
         ...mapActions({
-            addTask: 'addTask'
+            addTask: 'addTask',
+            toggleTask: 'toggleTask'
         }),
-        onSwitch(val) {
-            this.toggleCompleted = val
+        onSwitch(value) {
+            this.toggleCompleted = value
         },
-        toggleCheck(val) {
-            console.log(val)
+        toggleCheck(taskIndex) {
+            const payload = {
+                index: taskIndex,
+                id: this.$route.params.id,
+            }
+            this.toggleTask(payload)
         },
         AddTask() {
             const answer = prompt('Enter new task')

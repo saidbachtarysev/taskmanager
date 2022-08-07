@@ -1,6 +1,6 @@
 <template>
     <label class="label-container">
-        <input @input="$emit('toggleCheck', $event.target.checked)"
+        <input @input="$emit('toggleCheck')"
             :checked="checked" 
             type="checkbox">
         <span class="checkmark"></span>

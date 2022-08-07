@@ -2,10 +2,10 @@
     <div class="task"
         @mouseover="hover = true"
         @mouseleave="hover = false">
-        <div class="check-title">
+        <div class="check__title">
             <CheckTask :checked="task.completed" 
-                @toggleCheck="onToggle" />
-            <p class="task--text">{{ task.text }}</p>
+                @toggleCheck="$emit('toggleCheck')" />
+            <p class="task__text">{{ task.text }}</p>
         </div>
         <DeleteButton v-if="hover"
             @click="onDeleteTask" />
@@ -34,9 +34,6 @@ export default {
         ...mapActions({
             deleteTask: 'deleteTask'
         }),
-        onToggle(value) {
-            this.$emit('toggleCheck', value)
-        },
         onDeleteTask() {
             const payload = {
                 id: this.$route.params.id,
@@ -63,12 +60,12 @@ export default {
         border: 1px solid var(--color-grayscale-300);
     }
 
-    .task--text {
+    .task__text {
         font-weight: 400;
         margin-left: 0.75rem;
     }
 
-    .check-title {
+    .check__title {
         display: flex;
         align-items: center;
     }

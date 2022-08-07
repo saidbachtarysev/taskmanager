@@ -72,6 +72,23 @@ const mutations = {
         const tasks = state.projects[currentIndex].tasks.filter(t => t != payload.task)
         state.projects[currentIndex].tasks = tasks
     },
+    TOGGLE_TASK: (state, payload) => {
+        const currentIndex = state.projects.findIndex(p => p.id == payload.id)
+        const tasks = state.projects[currentIndex].tasks
+        let changedTasks = []
+        tasks.map((task, index) => {
+            if (index == payload.index) {
+                const newTask = {
+                    text: task.text,
+                    completed: !task.completed
+                }
+                changedTasks.push(newTask)
+            } else {
+                changedTasks.push(task)
+            }
+        })
+        state.projects[currentIndex].tasks = changedTasks
+    }
 }
 
 const actions = {
@@ -84,6 +101,9 @@ const actions = {
     deleteTask({ commit }, payload) {
         commit('REMOVE_TASK', payload)
     },
+    toggleTask({ commit }, payload) {
+        commit('TOGGLE_TASK', payload)
+    }
 }
 export default new Vuex.Store({
     state,
