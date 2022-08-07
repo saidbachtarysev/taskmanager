@@ -66,6 +66,9 @@ export default {
 
     .project__counter {
         margin-right: 1.25rem;
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--color-grayscale-500);
     }
 
     .badge {

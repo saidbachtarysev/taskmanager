@@ -20,8 +20,8 @@ export default {
 <style scoped>
     .switch {
         position: relative;
-        width: 3.5rem;
-        height: 2rem;
+        width: 3.7rem;
+        height: 2.1rem;
     }
 
     .switch input { 

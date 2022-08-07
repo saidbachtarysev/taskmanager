@@ -1,7 +1,7 @@
 <template>
     <div class="project--background">
         <Header :title="project.name"/>
-        <div class="project--body">
+        <div class="project__body">
             <div class="project--content--heading">
                 <h2 class="tasks--title">Tasks</h2>
                 <div class="toggle-wrapper">
@@ -86,9 +86,10 @@ export default {
 <style scoped>
     .project--background {
         background-color: var(--color-grayscale-250);
+        height: 100vh;
     }
 
-    .project--body {
+    .project__body {
         padding: 1rem 3rem;
     }
 

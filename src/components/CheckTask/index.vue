@@ -1,9 +1,10 @@
 <template>
-    <label class="label-container">
+    <label>
         <input @input="$emit('toggleCheck')"
             :checked="checked" 
+            class="checkbox-custom"
             type="checkbox">
-        <span class="checkmark"></span>
+        <span></span>
     </label>
 </template>
 <script>
@@ -18,7 +19,7 @@ export default {
 }
 </script>
 <style>
-    .label-container input {
+    .checkbox-custom {
         cursor: pointer;
     }
 </style>

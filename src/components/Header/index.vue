@@ -14,6 +14,6 @@ export default {
 <style scoped>
     .project-header {
         border-bottom: 1px solid var(--color-grayscale-400);
-        padding: 1.25rem 3rem;
+        padding: 0.7rem 3rem;
     }
 </style>

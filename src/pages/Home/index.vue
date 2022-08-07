@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="sidebar">
+        <div class="project__sidebar">
             <Header title="Task manager"
                 logo="logo.svg" />
             <div class="items-container">
@@ -10,9 +10,10 @@
                     @click="$router.push(project.id)" />
             </div>
             <AddButton title="Add new project"
+                class="project__add-button"
                 @click="createProject" />
         </div>
-        <div class="content">
+        <div class="project--content">
             <router-view />
         </div>
     </div>
@@ -70,16 +71,20 @@ export default {
 }
 </script>
 <style>
-    .sidebar {
+    .project__sidebar {
         float: left;
         width: 20rem;
     }
 
-    .content {
+    .project--content {
         overflow: hidden;
     }
 
     .items-container {
         margin-bottom: 1rem;
+    }
+
+    .project__add-button {
+        margin-left: 1.25rem;
     }
 </style>
