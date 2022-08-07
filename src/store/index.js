@@ -59,7 +59,8 @@ const getters = {
 
 const mutations = {
     ADD_PROJECT: (state, payload) => {
-        state.projects.append(payload)
+        const projects = state.projects
+        state.projects = [...projects, payload]
     },
     ADD_TASK: (state, payload) => {
         const currentIndex = state.projects.findIndex(p => p.id == payload.id)
@@ -74,8 +75,8 @@ const mutations = {
 }
 
 const actions = {
-    createProject({ commit }, data) {
-        commit('ADD_PROJECT', data)
+    addProject({ commit }, payload) {
+        commit('ADD_PROJECT', payload)
     },
     addTask({ commit }, payload) {
         commit('ADD_TASK', payload)
